@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form, FormField, Header, Segment } from "semantic-ui-react";
 
-const EventForm = () => {
+const EventForm = ({ setFormOpen }) => {
   return (
     <Segment clearing>
       <Header content="Create new event" />
@@ -24,8 +24,15 @@ const EventForm = () => {
         <FormField>
           <input type="date" placeholder="Date" />
         </FormField>
-        <Button type="submit" floated="right" positive content='Submit' />
-        <Button type="submit" floated="right" content='Cancel' />
+        <Button type="submit" floated="right" positive content="Submit" />
+        <Button
+          onClick={() => {
+            setFormOpen(false);
+          }}
+          type="submit"
+          floated="right"
+          content="Cancel"
+        />
       </Form>
     </Segment>
   );
