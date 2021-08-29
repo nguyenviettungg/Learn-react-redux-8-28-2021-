@@ -2,7 +2,13 @@ import cuid from "cuid";
 import React, { useState } from "react";
 import { Button, Form, FormField, Header, Segment } from "semantic-ui-react";
 
-const EventForm = ({ setFormOpen, setEvents, createEvent, selectedEvent }) => {
+const EventForm = ({
+  setFormOpen,
+  setEvents,
+  createEvent,
+  selectedEvent,
+  updateEvent,
+}) => {
   const initialValues = selectedEvent ?? {
     // ?? - null conditional operator :if left null set right value
     title: "",
@@ -14,13 +20,15 @@ const EventForm = ({ setFormOpen, setEvents, createEvent, selectedEvent }) => {
   };
   const [values, setValues] = useState(initialValues);
   function handleFormSubmit() {
-    createEvent({
-      ...values,
-      id: cuid(),
-      hostedBy: "Beep",
-      attendees: [],
-      hostPhotoURL: "%PUBLIC_URL%/../assets/user.png",
-    });
+    selectedEvent
+      ? updateEvent({ ...selectedEvent, ...values })
+      : createEvent({
+          ...values,
+          id: cuid(),
+          hostedBy: "Beep",
+          attendees: [],
+          hostPhotoURL: "%PUBLIC_URL%/../assets/user.png",
+        });
     setFormOpen(false);
   }
   function handleInputChange(e) {

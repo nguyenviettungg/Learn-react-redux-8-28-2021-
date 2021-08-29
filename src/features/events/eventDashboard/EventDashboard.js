@@ -15,6 +15,12 @@ const EventDashboard = ({
   function handleCreateEvent(event) {
     setEvents([...events, event]);
   }
+  function handleUpdateEvent(updatedEvent) {
+    setEvents(
+      events.map((evt) => (evt.id === updatedEvent.id ? updatedEvent : evt))
+    );
+    selectEvent(null);
+  }
 
   return (
     <Grid>
@@ -28,6 +34,7 @@ const EventDashboard = ({
             setEvents={setEvents}
             createEvent={handleCreateEvent}
             selectedEvent={selectedEvent}
+            updateEvent={handleUpdateEvent}
             key={selectedEvent ? selectedEvent.id : null}
           />
         )}
