@@ -22,10 +22,18 @@ const EventDashboard = ({
     selectEvent(null);
   }
 
+  function handleDeleteEvent(eventId) {
+    setEvents(events.filter((evt) => evt.id !== eventId));
+  }
+
   return (
     <Grid>
       <GridColumn width="10">
-        <EventList events={events} selectEvent={selectEvent} />
+        <EventList
+          events={events}
+          selectEvent={selectEvent}
+          deleteEvent={handleDeleteEvent}
+        />
       </GridColumn>
       <GridColumn width="6">
         {formOpen && (
