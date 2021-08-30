@@ -14,3 +14,21 @@ body {
 .ui.main.container {
   margin-top: 7em;
 }
+
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: rgb(4, 32, 43) !important;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 32, 43, 1) 0%,
+    rgba(19, 144, 149, 1) 35%,
+    rgba(9, 93, 136, 1) 100%
+  ) !important;
+}
+
+.masthead h1.ui.header {
+  font-size: 4em;
+}
